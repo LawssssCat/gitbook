@@ -73,17 +73,24 @@ $ sudo systemctl restart docker
 $ sudo docker pull mysql:5.7
 $ sudo docker images 
 
-# 日志映射到本地 -v /dev/mydata/mysql/log:/var/log/mysql
-# 容器中的Store Data映射到本地 -v /dev/mydata/mysql/data:/var/lib/mysql
-# 使用自定义MySQL配置文件 -v /dev/mydata/mysql/conf:/etc/mysql
-# （必须）指定数据库登录密码 MYSQL_ROOT_PASSWORD=root
 $ sudo docker run --name mysql -p 3306:3306 \
 -v /dev/mydata/mysql/log:/var/log/mysql \
 -v /dev/mydata/mysql/data:/var/lib/mysql \
 -v /dev/mydata/mysql/conf:/etc/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
 -d mysql:5.7
+# 日志映射到本地 -v /dev/mydata/mysql/log:/var/log/mysql
+# 容器中的Store Data映射到本地 -v 
+# 使用自定义MySQL配置文件 -v /dev/mydata/mysql/conf:/etc/mysql
+# （必须）指定数据库登录密码 MYSQL_ROOT_PASSWORD=root
 ```
+
+{% hint style="info" %}
+* `/dev/mydata/mysql/log:/var/log/mysql` 日志映射到本地
+* `/dev/mydata/mysql/data:/var/lib/mysql` 数据库数据映射到本地
+
+/dev/mydata/mysql/data:/var/lib/mysql/dev/mydata/mysql/data:/var/lib/mysql
+{% endhint %}
 
 > Docker官网关于MySQL:5.7：[https://hub.docker.com/\_/mysql](https://hub.docker.com/_/mysql)
 >
